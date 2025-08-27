@@ -49,8 +49,8 @@
             Chat with Us
             </div>
             <div style="padding:20px;flex-grow:1;display:flex;flex-direction:column;">
-            <input type="text" id="chatName" placeholder="Your name" style="width:100%;padding:8px;margin-bottom:10px;" />
-            <input type="email" id="chatEmail" placeholder="Your email" style="width:100%;padding:8px;margin-bottom:10px;" />
+            <input type="text" id="chatName" placeholder="Your name" style="padding:8px;margin-bottom:10px;" />
+            <input type="email" id="chatEmail" placeholder="Your email" style="padding:8px;margin-bottom:10px;" />
             <button id="chatStartBtn" style="padding:10px;width:100%;background:${primaryColor};color:white;border:none;border-radius:5px;cursor:pointer;">Start Chat</button>
             </div>
         </div>

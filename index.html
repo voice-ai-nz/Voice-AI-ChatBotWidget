@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Local Test</title>
+</head>
+<body>
+  <h1>Widget Test</h1>
+
+  <!-- Container your JS might use -->
+  <div id="widget-container"></div>
+
+  <!-- Load your local built JS file -->
+  <script src="./src/index.js" 
+    data-token="YOUR_TOKEN">
+  </script>
+
+  <!-- If your script attaches something to window, you can test -->
+  <script>
+    // Example: if widget.js exposes `initWidget`
+    if (typeof initWidget === "function") {
+      initWidget({ target: "#widget-container" });
+    }
+  </script>
+</body>
+</html>

@@ -29,8 +29,8 @@
         position: fixed;
         bottom: 20px;
         right: 20px;
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         border: none;
         background-color: #007bff;
@@ -41,7 +41,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: background-color 0.3s ease;
+        transition: background-color 0.3s ease, transform 0.15s ease;
         `;
         document.body.appendChild(toggleBtn);
 
@@ -50,7 +50,7 @@
         container.id = "chatWidgetContainer";
         container.style = `
         position: fixed;
-        bottom: 90px;
+        bottom: 80px;
         right: 20px;
         width: 400px;
         max-height: 500px;
@@ -70,10 +70,23 @@
 
         let sessionStarted = false;
         let sessionId = null;
+        let chatOpen = false;
 
         toggleBtn.addEventListener("click", async () => {
-            // Toggle animation
-            if (container.style.height === "0px" || container.style.opacity === "0") {
+            // 1. Shrink animation (scale down then back up)
+            toggleBtn.style.transform = "scale(0.9)";
+            setTimeout(() => {
+                toggleBtn.style.transform = "scale(1)";
+            }, 150);
+
+            // 2. Toggle icon
+            chatOpen = !chatOpen;
+            toggleBtn.innerText = chatOpen ? "\u{25BE}" : "\u{1F4AC}"; 
+            // ▼ down arrow (U+25BC) when open
+            // 💬 chat bubble (U+1F4AC) when closed
+
+            // 3. Toggle chat container animation
+            if (chatOpen) {
                 container.style.height = "500px";
                 container.style.opacity = "1";
             } else {
@@ -111,6 +124,7 @@
                 chat.history = [
                 { text: "Hi there, you're speaking with AI Agent. How can I help you?", role: "ai" }
                 ];
+                chat.avatars = true;
                 container.appendChild(chat);
 
                 // Connect chat
